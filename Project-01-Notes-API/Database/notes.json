@@ -1,0 +1,38 @@
+{
+    "N001": {
+        "id": "N001",
+        "title": "Learn FastAPI",
+        "category": "programming",
+        "tags": [
+            "python",
+            "backend"
+        ],
+        "content": "pydantic used for data validation in fastAPI",
+        "created_date": "2026-08-04",
+        "is_pinned": false
+    },
+    "N002": {
+        "id": "N002",
+        "title": "Learn RAG",
+        "category": "programming",
+        "tags": [
+            "python",
+            "backend"
+        ],
+        "content": "RAG and fastAPI",
+        "created_date": "2026-08-04",
+        "is_pinned": false
+    },
+    "N003": {
+        "id": "N003",
+        "title": "Test Notes",
+        "category": "coding",
+        "tags": [
+            "python",
+            "backend"
+        ],
+        "content": "Changing folder Structure and files",
+        "created_date": "2026-08-04",
+        "is_pinned": true
+    }
+}

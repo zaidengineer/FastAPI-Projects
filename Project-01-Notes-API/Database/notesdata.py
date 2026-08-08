@@ -1,0 +1,8 @@
+import json
+def load_data():
+    with open('Database/notes.json','r')as file:
+        data=json.load(file)
+    return data
+def save_data(data):
+    with open('Database/notes.json','w')as file:
+        json.dump(data,file,indent=4)
