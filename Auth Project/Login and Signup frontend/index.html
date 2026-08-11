@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Auth System</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="wraper" id="wraper">
+
+        <span class="bg-animate"></span>
+        <span class="bg-animate2"></span>
+
+
+        <!-- ================= LOGIN ================= -->
+
+<form id="loginForm">
+
+    <div class="login-box">
+
+        <h1>Login</h1>
+
+        <div class="input-box">
+
+            <input type="text" required>
+
+            <label>username</label>
+
+            <img
+                class="icon icon-default"
+                src="images/user.png"
+                alt=""
+            >
+
+            <img
+                class="icon icon-active"
+                src="images/user-active.png"
+                alt=""
+            >
+
+        </div>
+
+        <div class="input-box">
+
+            <input type="password" required>
+
+            <label>Password</label>
+
+            <img
+                class="icon icon-default"
+                src="images/lock.png"
+                alt=""
+            >
+
+            <img
+                class="icon icon-active"
+                src="images/lock-active.png"
+                alt=""
+            >
+
+        </div>
+
+        <div class="remeber-me">
+
+            <label>
+                <input type="checkbox">
+                <span>Remeber me</span>
+            </label>
+
+            <a href="#" id="forgotPasswordBtn">
+                Forgot Password?
+            </a>
+
+        </div>
+
+        <div class="btn">
+            <button type="submit">Login</button>
+        </div>
+
+        <div class="sign">
+
+            <p>
+                Don't have an account?
+                <a href="#" id="signUpBtn">
+                    Sign up
+                </a>
+            </p>
+
+        </div>
+
+    </div>
+
+</form>
+
+        <!-- ================= FORGOT PASSWORD ================= -->
+
+        <form id="forgotForm">
+
+            <div class="forgot-box">
+
+                <h1>Reset Password</h1>
+
+
+                <div class="input-box">
+
+                    <input
+                        type="email"
+                        id="forgotEmail"
+                        required
+                    >
+
+                    <label>Email</label>
+
+                    <img
+                        class="icon icon-default"
+                        src="images/email.png"
+                        alt=""
+                    >
+
+                    <img
+                        class="icon icon-active"
+                        src="images/email-active.png"
+                        alt=""
+                    >
+
+                </div>
+
+
+                <div class="input-box">
+
+                    <input
+                        type="password"
+                        id="forgotNewPassword"
+                        minlength="8"
+                        required
+                    >
+
+                    <label>New Password</label>
+
+                    <img
+                        class="icon icon-default"
+                        src="images/lock.png"
+                        alt=""
+                    >
+
+                    <img
+                        class="icon icon-active"
+                        src="images/lock-active.png"
+                        alt=""
+                    >
+
+                </div>
+
+
+                <p
+                    class="form-msg"
+                    id="forgotMsg"
+                ></p>
+
+
+                <div class="btn">
+
+                    <button type="submit">
+                        Reset Password
+                    </button>
+
+                </div>
+
+
+                <div class="sign">
+
+                    <p>
+
+                        Remembered it?
+
+                        <a href="#" id="backToLoginBtn">
+                            Back to login
+                        </a>
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </form>
+
+
+
+        <!-- ================= REGISTER ================= -->
+
+        <form id="registerForm">
+
+            <div class="register-box">
+
+                <h1>Sign Up</h1>
+
+
+                <div class="input-box">
+
+                    <input
+                        type="text"
+                        id="registerUsername"
+                        required
+                    >
+
+                    <label>Username</label>
+
+                    <img
+                        class="icon icon-default"
+                        src="images/user.png"
+                        alt=""
+                    >
+
+                    <img
+                        class="icon icon-active"
+                        src="images/user-active.png"
+                        alt=""
+                    >
+
+                </div>
+
+
+                <div class="input-box">
+
+                    <input
+                        type="email"
+                        id="registerEmail"
+                        required
+                    >
+
+                    <label>Email</label>
+
+                    <img
+                        class="icon icon-default"
+                        src="images/email.png"
+                        alt=""
+                    >
+
+                    <img
+                        class="icon icon-active"
+                        src="images/email-active.png"
+                        alt=""
+                    >
+
+                </div>
+
+
+                <div class="input-box">
+
+                    <input
+                        type="password"
+                        id="registerPassword"
+                        minlength="8"
+                        required
+                    >
+
+                    <label>Password</label>
+
+                    <img
+                        class="icon icon-default"
+                        src="images/lock.png"
+                        alt=""
+                    >
+
+                    <img
+                        class="icon icon-active"
+                        src="images/lock-active.png"
+                        alt=""
+                    >
+
+                </div>
+
+
+                <div class="input-box">
+
+                    <input
+                        type="password"
+                        id="registerConfirmPassword"
+                        minlength="8"
+                        required
+                    >
+
+                    <label>Confirm Password</label>
+
+                    <img
+                        class="icon icon-default"
+                        src="images/lock.png"
+                        alt=""
+                    >
+
+                    <img
+                        class="icon icon-active"
+                        src="images/lock-active.png"
+                        alt=""
+                    >
+
+                </div>
+
+
+                <div class="remeber-me">
+
+                    <label>
+
+                        <input
+                            type="checkbox"
+                            id="terms"
+                            required
+                        >
+
+                        <span>
+                            I agree to the terms & conditions
+                        </span>
+
+                    </label>
+
+                </div>
+
+
+                <!-- Signup message -->
+
+                <p
+                    class="form-msg"
+                    id="registerMsg"
+                ></p>
+
+
+                <div class="btn">
+
+                    <button type="submit">
+                        Sign Up
+                    </button>
+
+                </div>
+
+
+                <div class="sign">
+
+                    <p>
+
+                        Already have an account?
+
+                        <a href="#" id="signInBtn">
+                            Sign in
+                        </a>
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </form>
+
+
+
+        <!-- ================= INFO TEXT ================= -->
+
+        <div class="info-text login-info">
+
+            <h2>Welcome Back!</h2>
+
+            <p>
+                Log in to continue where you left off.
+            </p>
+
+        </div>
+
+
+        <div class="info-text register-info">
+
+            <h2>Start your journey</h2>
+
+            <p>
+                Create your free account in seconds and
+                unlock a faster, smarter way to get things done.
+            </p>
+
+        </div>
+
+
+        <div class="info-text forgot-info">
+
+            <h2>Reset Password</h2>
+
+            <p>
+                It happens. Enter your email and a new password
+                to get back in.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

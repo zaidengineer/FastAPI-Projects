@@ -1,0 +1,383 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background-color: black;
+}
+
+.wraper{
+    height: 450px;
+    width: 750px;
+   position: relative;
+   border: 2px solid aqua;
+   left: 0px;
+   overflow:hidden;
+   transition: height .5s ease;
+}
+
+/* Signup needs a bit more room for the extra fields (username, email,
+   password, confirm password, terms, button, link). Login keeps its
+   original 450px height/750px width untouched. */
+.wraper.active{
+    height: 580px;
+}
+
+.wraper .login-box,
+.wraper .register-box,
+.wraper .forgot-box{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 50%;
+    height: 100%;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 19px;
+}
+
+/* Login box shown by default, register/forgot boxes hidden underneath it */
+.wraper .login-box{
+    opacity: 1;
+    z-index: 2;
+    transition: opacity .3s ease .3s;
+}
+
+.wraper .register-box,
+.wraper .forgot-box{
+    opacity: 0;
+    z-index: 1;
+    pointer-events: none;
+    transition: opacity .3s ease;
+}
+
+.wraper.active .login-box{
+    opacity: 0;
+    z-index: 1;
+    pointer-events: none;
+    transition: opacity .3s ease;
+}
+
+.wraper.active .register-box{
+    opacity: 1;
+    z-index: 2;
+    pointer-events: auto;
+    transition: opacity .3s ease .3s;
+}
+
+/* Forgot-password panel: same 450px/750px footprint as the login box,
+   just swapped in on top of it */
+.wraper.forgot .login-box{
+    opacity: 0;
+    z-index: 1;
+    pointer-events: none;
+    transition: opacity .3s ease;
+}
+
+.wraper.forgot .forgot-box{
+    opacity: 1;
+    z-index: 2;
+    pointer-events: auto;
+    transition: opacity .3s ease .3s;
+}
+
+h1{
+    text-align: center;
+    font-size: 2em;
+    font-weight: 600;
+    color: white;
+}
+.input-box{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    background-color:transparent;
+    margin: 25px 0;
+}
+
+/* Register box has 4 inputs instead of 2, give each a little less
+   vertical margin so everything fits comfortably in the taller box */
+.register-box .input-box{
+    margin: 18px 0;
+}
+
+.input-box input{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid white;
+    color: white;
+    font-size:15px;
+    caret-color: #0ef;
+}
+
+.input-box label{
+    position: absolute;
+    top:50%;
+    left:0;
+    transform: translateY(-50%);
+    font-size: 15px;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s ease;
+}
+
+.input-box input:focus,
+.input-box input:valid{
+    border-bottom-color: #0ef;
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label{
+    top:-5px;
+    color: #0ef;
+}
+
+/* Icons are plain PNGs (not CSS masks) so they always render reliably
+   everywhere. Each field has two stacked icons - a white default and a
+   cyan "active" copy - and they crossfade into each other so the icon
+   changes colour together with the label/underline/cursor when its
+   input is focused or filled in. */
+.icon{
+    position:absolute;
+    top:50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 17px;
+    height: 17px;
+    object-fit: contain;
+    transition: opacity .3s ease;
+    pointer-events: none;
+}
+
+.icon-default{
+    opacity: 1;
+}
+
+.form-msg{
+    min-height: 16px;
+    font-size: 14px;
+    color: #0ef;
+    text-align: center;
+    margin: -10px 0 10px;
+    margin-top: 10px;
+}
+
+.icon-active{
+    opacity: 0;
+}
+
+.input-box input:focus~.icon-default,
+.input-box input:valid~.icon-default{
+    opacity: 0;
+}
+
+.input-box input:focus~.icon-active,
+.input-box input:valid~.icon-active{
+    opacity: 1;
+}
+
+.remeber-me{
+    display: flex;
+    align-items: center;
+    color: white;
+    position: relative;
+    justify-content: space-between;
+    gap: 16px;
+    font-size: 14px;
+    font-weight: 500;
+    font-size: 1em;
+}
+
+.remeber-me label{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.remeber-me a{
+    text-decoration: none;
+    color: #0ef;
+    white-space: nowrap;
+}
+
+.remeber-me a:hover{
+    text-decoration: underline;
+}
+
+/* Register box only has the checkbox (no forgot-password link), so let
+   it use the full width instead of being squeezed to one side */
+.register-box .remeber-me{
+    justify-content: flex-start;
+}
+
+.btn button::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 300%;
+    top:-100%;
+    left: 0;
+    background:linear-gradient(#081b29, #0ef,#081b29,#0ef);
+    z-index:-1;
+    transition: .5s;
+}
+.btn button:hover::before{
+    top: 0;
+}
+.btn{
+    width: 100%;
+    outline: none;  
+}
+ button{
+    top:30px;
+    position: relative;
+    width: 100%;
+    height: 45px;
+    border: none;
+    border-radius: 40px ;
+    cursor: pointer;
+    outline: none;
+    background-color:transparent;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 500;
+    text-align: center;
+    border:2px solid #0ef;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.login-box .sign,
+.register-box .sign {
+    font-size: 14px;
+    margin: 60px 0px 10px;
+    color: white;
+    text-align: center;
+    font-weight: 500;
+}
+
+.register-box .sign{
+    margin: 40px 0px 10px;
+}
+
+.sign p a{
+    color:#0ef;
+    text-decoration: none;
+}
+
+.sign p a:hover{
+    text-decoration: underline;
+}
+
+.info-text{
+    position: absolute;
+    top:0;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   flex-direction: column;
+}
+
+.wraper .login-info{
+    right:0;
+    text-align: right;
+    padding: 0 40px 60px 150px;
+    opacity: 1;
+    z-index: 2;
+    transition: opacity .3s ease .3s;
+}
+
+.wraper .register-info,
+.wraper .forgot-info{
+    right:0;
+    text-align: right;
+    padding: 0 40px 60px 150px;
+    opacity: 0;
+    z-index: 1;
+    transition: opacity .3s ease;
+}
+
+.wraper.active .login-info{
+    opacity: 0;
+    z-index: 1;
+    transition: opacity .3s ease;
+}
+
+.wraper.active .register-info{
+    opacity: 1;
+    z-index: 2;
+    transition: opacity .3s ease .3s;
+}
+
+.wraper.forgot .login-info{
+    opacity: 0;
+    z-index: 1;
+    transition: opacity .3s ease;
+}
+
+.wraper.forgot .forgot-info{
+    opacity: 1;
+    z-index: 2;
+    transition: opacity .3s ease .3s;
+}
+
+.info-text h2{
+    color: white;
+    font-size: 34px;
+    text-transform: uppercase;
+    line-height: 1.3;
+}
+
+.info-text p{
+    font-size: 16px;
+    color: white;
+    position: relative;
+    /* right:-18px; */
+}
+
+.wraper .bg-animate,
+.wraper .bg-animate2{
+    position:absolute;
+    top:0;
+    right: 0;
+    height: 480px;
+    width: 750px;
+    background:linear-gradient(45deg, #081b29, #0ef);
+    transform:rotate(10deg) skewY(40deg);
+    border-bottom: 3px solid #0ef;
+    transform-origin: bottom right;
+    transition: height .5s ease;
+}
+
+/* Grow the diagonal backdrop to match the taller signup box */
+.wraper.active .bg-animate,
+.wraper.active .bg-animate2{
+    height: 620px;
+}
+
+.wraper .bg-animate2{
+    opacity: 0;
+    transition: opacity .3s ease, height .5s ease;
+}
+
+.wraper.active .bg-animate2{
+    opacity: 1;
+    transition: opacity .3s ease .3s, height .5s ease;
+}
